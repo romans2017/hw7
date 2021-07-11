@@ -8,10 +8,7 @@ public class BrokenLine extends Line {
     public BrokenLine(Point[] points) {
         super();
         this.type += "-broken";
-        this.points = new Point[points.length];
-        for (int i=0; i<points.length; i++) {
-            this.points[i] = new Point(points[i]);
-        }
+        this.points = points.clone();
     }
 
     public Point[] getPoints() {
@@ -19,10 +16,7 @@ public class BrokenLine extends Line {
     }
 
     public void setPoints(Point[] points) {
-        this.points = new Point[points.length];
-        for (int i=0; i<points.length; i++) {
-            this.points[i] = new Point(points[i]);
-        }
+        this.points = points.clone();
     }
 
     @Override
