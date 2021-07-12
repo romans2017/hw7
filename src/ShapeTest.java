@@ -4,7 +4,7 @@ import ua.goit.handlers.*;
 public class ShapeTest {
     private final static ShapeHandler handler = new ShapeHandler();
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
         try {
             //point
             Point point1 = new Point(1, 2);
@@ -29,7 +29,6 @@ public class ShapeTest {
             System.out.println(straight3.equals(straight1));
             handler.move(straight3, -1, 10);
             System.out.println(straight3);
-            System.out.println(straight1);
             System.out.println(straight3.equals(straight1));
 
             //curve
@@ -54,7 +53,7 @@ public class ShapeTest {
             Shape brokenLine3 = handler.copy(brokenLine1);
             System.out.println(brokenLine3);
             System.out.println(brokenLine3.equals(brokenLine1));
-            handler.move(brokenLine3, 0, 0);
+            handler.move(brokenLine3, 1, 0);
             System.out.println(brokenLine3);
             System.out.println(brokenLine3.equals(brokenLine1));
 
@@ -82,7 +81,7 @@ public class ShapeTest {
             System.out.println(circle3.equals(circle2));
             handler.move(circle3, -1, 10);
             System.out.println(circle3);
-            System.out.println(circle3.equals(circle1));
+            System.out.println(circle3.equals(circle2));
 
             //quad
             System.out.println();

@@ -25,9 +25,4 @@ abstract public class Shape implements Cloneable {
     public String draw() {
         return type + " is drawn";
     }
-
-    @Override
-    public Shape clone() throws CloneNotSupportedException {
-        return (Shape)super.clone();
-    }
 }
