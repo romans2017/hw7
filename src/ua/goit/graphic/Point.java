@@ -79,4 +79,5 @@ public class Point extends Shape {
                 ", color='" + color.toString() + '\'' +
                 '}';
     }
+
 }

@@ -1,6 +1,6 @@
 package ua.goit.graphic;
 
-abstract public class Shape {
+abstract public class Shape implements Cloneable {
     protected String type;
     protected Colors color;
 
@@ -24,5 +24,10 @@ abstract public class Shape {
 
     public String draw() {
         return type + " is drawn";
+    }
+
+    @Override
+    public Shape clone() throws CloneNotSupportedException {
+        return (Shape)super.clone();
     }
 }

@@ -4,7 +4,7 @@ import ua.goit.handlers.*;
 public class ShapeTest {
     private final static ShapeHandler handler = new ShapeHandler();
 
-    public static void main(String[] args) throws IllegalShapeException {
+    public static void main(String[] args) throws CloneNotSupportedException {
         //point
         Point point1 = new Point(1,2);
         System.out.println(point1);
