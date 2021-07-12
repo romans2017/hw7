@@ -42,33 +42,31 @@ public class Point extends Shape {
         return y;
     }
 
-    public void setX(int x) {
+    public void setX(int x) throws IllegalArgumentException {
+        if (x<0) {
+            throw new IllegalArgumentException("y of Point must be non-negative");
+        }
         this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(int y) throws  IllegalArgumentException{
+        if (y<0) {
+            throw new IllegalArgumentException("y of Point must be non-negative");
+        }
         this.y = y;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x,y);
+        return Objects.hash(x,y,color);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() == obj.getClass()) {
-            Point anObj = (Point)obj;
-            return (Objects.equals(anObj.x, x)
-                    && Objects.equals(anObj.y, y));
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return x == point.x && y == point.y && color.equals(point.color);
     }
 
     @Override
@@ -78,6 +76,11 @@ public class Point extends Shape {
                 ", y=" + y +
                 ", color='" + color.toString() + '\'' +
                 '}';
+    }
+
+    public void shift(int shiftX, int shiftY) throws IllegalArgumentException {
+        setX(getX() + shiftX);
+        setY(getY() + shiftY);
     }
 
 }
