@@ -12,15 +12,7 @@ public class Ellipse extends Shape implements CanFill {
     protected int semiMinorAxis;
 
     public Ellipse(Point focus1, Point focus2, int semiMajorAxis, int semiMinorAxis) {
-        super();
-        if (semiMajorAxis<=0 || semiMinorAxis<=0) {
-            throw new IllegalArgumentException("semiMajorAxis and semiMinorAxis must be positive");
-        }
-        this.type = "Ellipse";
-        this.focus1 = new Point(focus1);
-        this.focus2 = new Point(focus2);
-        this.semiMajorAxis = semiMajorAxis;
-        this.semiMinorAxis = semiMinorAxis;
+        this(Colors.Black, focus1, focus2, semiMajorAxis, semiMinorAxis);
     }
 
     public Ellipse(Colors color, Point focus1, Point focus2, int semiMajorAxis, int semiMinorAxis) {
@@ -40,7 +32,7 @@ public class Ellipse extends Shape implements CanFill {
     }
 
     public void setFocus1(Point focus1) {
-        this.focus1 = new Point(focus1);
+        this.focus1 = focus1;
     }
 
     public Point getFocus2() {
@@ -48,7 +40,7 @@ public class Ellipse extends Shape implements CanFill {
     }
 
     public void setFocus2(Point focus2) {
-        this.focus2 = new Point(focus2);
+        this.focus2 = focus2;
     }
 
     public int getSemiMajorAxis() {
@@ -75,12 +67,14 @@ public class Ellipse extends Shape implements CanFill {
         return focus1.equals(ellipse.focus1)
                 && focus2.equals(ellipse.focus2)
                 && Objects.equals(semiMajorAxis, ellipse.semiMajorAxis)
-                && Objects.equals(semiMinorAxis, ellipse.semiMinorAxis);
+                && Objects.equals(semiMinorAxis, ellipse.semiMinorAxis)
+                && color.equals(ellipse.color)
+                && type.equals(ellipse.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(focus1, focus2, semiMajorAxis, semiMinorAxis);
+        return Objects.hash(focus1, focus2, semiMajorAxis, semiMinorAxis, color, type);
     }
 
     @Override

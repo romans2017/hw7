@@ -1,14 +1,19 @@
 package ua.goit.graphic;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class BrokenLine extends Line {
     private Point[] points;
 
     public BrokenLine(Point[] points) {
-        super();
+        this(Colors.Black, points);
+    }
+
+    public BrokenLine(Colors color, Point[] points) {
+        super(color);
         this.type += "-broken";
-        this.points = points.clone();
+        this.points = points;
     }
 
     public Point[] getPoints() {
@@ -16,7 +21,12 @@ public class BrokenLine extends Line {
     }
 
     public void setPoints(Point[] points) {
-        this.points = points.clone();
+        this.points = points;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(points) * Objects.hash(color,type);
     }
 
     @Override
@@ -24,12 +34,9 @@ public class BrokenLine extends Line {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BrokenLine that = (BrokenLine) o;
-        return Arrays.equals(points, that.points);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(points);
+        return Arrays.equals(points, that.points)
+                && color.equals(that.color)
+                && type.equals(that.type);
     }
 
     @Override

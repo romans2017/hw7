@@ -17,13 +17,7 @@ public class Point extends Shape {
     }
 
     public Point(int x, int y) throws IllegalArgumentException {
-        super();
-        if (x<0 || y<0) {
-            throw new IllegalArgumentException("x and y must be non-negative");
-        }
-        this.type = "Point";
-        this.x = x;
-        this.y = y;
+        this(Colors.Black, x, y);
     }
 
     public Point(Point aPoint) {
@@ -58,7 +52,7 @@ public class Point extends Shape {
 
     @Override
     public int hashCode() {
-        return Objects.hash(x,y,color);
+        return Objects.hash(x,y,color,type);
     }
 
     @Override
@@ -66,7 +60,10 @@ public class Point extends Shape {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Point point = (Point) o;
-        return x == point.x && y == point.y && color.equals(point.color);
+        return x == point.x
+                && y == point.y
+                && color.equals(point.color)
+                && type.equals(point.type);
     }
 
     @Override

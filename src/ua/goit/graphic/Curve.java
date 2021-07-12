@@ -9,21 +9,16 @@ public class Curve extends Line{
     private Point pointAnchor2;
 
     public Curve(Point pointStart, Point pointEnd, Point pointAnchor1, Point pointAnchor2) {
-        super();
-        this.type += "-curve";
-        this.pointAnchor1 = new Point(pointAnchor1.getX(), pointAnchor1.getY());
-        this.pointAnchor2 = new Point(pointAnchor2.getX(), pointAnchor2.getY());
-        this.pointStart = new Point(pointStart.getX(), pointStart.getY());
-        this.pointEnd = new Point(pointEnd.getX(), pointEnd.getY());
+        this(Colors.Black, pointStart, pointEnd, pointAnchor1, pointAnchor2);
     }
 
     public Curve(Colors color, Point pointStart, Point pointEnd, Point pointAnchor1, Point pointAnchor2) {
         super(color);
         this.type += "-curve";
-        this.pointAnchor1 = new Point(color, pointAnchor1.getX(), pointAnchor1.getY());
-        this.pointAnchor2 = new Point(color, pointAnchor2.getX(), pointAnchor2.getY());
-        this.pointStart = new Point(color, pointStart.getX(), pointStart.getY());
-        this.pointEnd = new Point(color, pointEnd.getX(), pointEnd.getY());
+        this.pointAnchor1 = pointAnchor1;
+        this.pointAnchor2 = pointAnchor2;
+        this.pointStart = pointStart;
+        this.pointEnd = pointEnd;
     }
 
     public Point getPointStart() {
@@ -43,11 +38,11 @@ public class Curve extends Line{
     }
 
     public void setPointStart(Point pointStart) {
-        this.pointStart = new Point(pointStart.getColor(), pointStart.getX(), pointStart.getY());
+        this.pointStart = pointStart;
     }
 
     public void setPointEnd(Point pointEnd) {
-        this.pointEnd = new Point(pointEnd.getColor(), pointEnd.getX(), pointEnd.getY());
+        this.pointEnd = pointEnd;
     }
 
     public void setPointAnchor1(Point pointAnchor1) {
@@ -60,25 +55,20 @@ public class Curve extends Line{
 
     @Override
     public int hashCode() {
-        return Objects.hash(pointStart, pointEnd, pointAnchor1, pointAnchor2);
+        return Objects.hash(pointStart, pointEnd, pointAnchor1, pointAnchor2, color, type);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() == obj.getClass()) {
-            Curve anObj = (Curve)obj;
-            return (anObj.pointStart.equals(pointStart)
-                    && anObj.pointEnd.equals(pointEnd)
-                    && anObj.pointAnchor1.equals(pointAnchor1)
-                    && anObj.pointAnchor2.equals(pointAnchor2));
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Curve curve = (Curve) o;
+        return Objects.equals(pointStart, curve.pointStart)
+                && Objects.equals(pointEnd, curve.pointEnd)
+                && Objects.equals(pointAnchor1, curve.pointAnchor1)
+                && Objects.equals(pointAnchor2, curve.pointAnchor2)
+                && color.equals(curve.color)
+                && type.equals(curve.type);
     }
 
     @Override

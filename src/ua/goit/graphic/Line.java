@@ -7,7 +7,6 @@ abstract public class Line extends Shape {
     }
 
     Line() {
-        super();
-        this.type = "Line";
+        this(Colors.Black);
     }
 }

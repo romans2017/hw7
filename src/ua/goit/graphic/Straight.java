@@ -7,18 +7,15 @@ public class Straight extends Line{
     private Point pointStart;
     private Point pointEnd;
 
+    public Straight(Point pointStart, Point pointEnd) {
+        this(Colors.Black, pointStart, pointEnd);
+    }
+
     public Straight(Colors color, Point pointStart, Point pointEnd) {
         super(color);
         this.type += "-straight";
-        this.pointStart = new Point(color, pointStart.getX(), pointStart.getY());
-        this.pointEnd = new Point(color, pointEnd.getX(), pointEnd.getY());
-    }
-
-    public Straight(Point pointStart, Point pointEnd) {
-        super();
-        this.type += "-straight";
-        this.pointStart = new Point(pointStart.getX(), pointStart.getY());
-        this.pointEnd = new Point(pointEnd.getX(), pointEnd.getY());
+        this.pointStart = pointStart;
+        this.pointEnd = pointEnd;
     }
 
     public Point getPointStart() {
@@ -30,32 +27,27 @@ public class Straight extends Line{
     }
 
     public void setPointStart(Point pointStart) {
-        this.pointStart = new Point(pointStart);
+        this.pointStart = pointStart;
     }
 
     public void setPointEnd(Point pointEnd) {
-        this.pointEnd = new Point(pointEnd);
+        this.pointEnd = pointEnd;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pointStart, pointEnd);
+        return Objects.hash(pointStart, pointEnd, color, type);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() == obj.getClass()) {
-            Straight anObj = (Straight)obj;
-            return (anObj.pointStart.equals(pointStart)
-                    && anObj.pointEnd.equals(pointEnd));
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Straight straight = (Straight) o;
+        return Objects.equals(pointStart, straight.pointStart)
+                && Objects.equals(pointEnd, straight.pointEnd)
+                && color.equals(straight.color)
+                && type.equals(straight.type);
     }
 
     @Override

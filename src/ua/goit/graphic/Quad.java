@@ -11,12 +11,7 @@ public class Quad extends Shape implements CanFill {
     private Point pointD;
 
     public Quad(Point pointA, Point pointB, Point pointC, Point pointD) {
-        super();
-        this.type = "Quad";
-        this.pointA = new Point(pointA);
-        this.pointB = new Point(pointB);
-        this.pointC = new Point(pointC);
-        this.pointD = new Point(pointD);
+        this(Colors.Black, pointA, pointB, pointC, pointD);
     }
 
     public Quad(Colors color, Point pointA, Point pointB, Point pointC, Point pointD) {
@@ -33,7 +28,7 @@ public class Quad extends Shape implements CanFill {
     }
 
     public void setPointA(Point pointA) {
-        this.pointA = new Point(pointA);
+        this.pointA = pointA;
     }
 
     public Point getPointB() {
@@ -41,7 +36,7 @@ public class Quad extends Shape implements CanFill {
     }
 
     public void setPointB(Point pointB) {
-        this.pointB = new Point(pointB);
+        this.pointB = pointB;
     }
 
     public Point getPointC() {
@@ -49,7 +44,7 @@ public class Quad extends Shape implements CanFill {
     }
 
     public void setPointC(Point pointC) {
-        this.pointC = new Point(pointC);
+        this.pointC = pointC;
     }
 
     public Point getPointD() {
@@ -57,7 +52,7 @@ public class Quad extends Shape implements CanFill {
     }
 
     public void setPointD(Point pointD) {
-        this.pointD = new Point(pointD);
+        this.pointD = pointD;
     }
 
     @Override
@@ -65,15 +60,17 @@ public class Quad extends Shape implements CanFill {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Quad quad = (Quad) o;
-        return pointA.equals(quad.pointA)
-                && pointB.equals(quad.pointB)
-                && pointC.equals(quad.pointC)
-                && pointD.equals(quad.pointD);
+        return Objects.equals(pointA, quad.pointA)
+                && Objects.equals(pointB, quad.pointB)
+                && Objects.equals(pointC, quad.pointC)
+                && Objects.equals(pointD, quad.pointD)
+                && color.equals(quad.color)
+                && type.equals(quad.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pointA, pointB, pointC, pointD);
+        return Objects.hash(pointA, pointB, pointC, pointD, color, type);
     }
 
     @Override

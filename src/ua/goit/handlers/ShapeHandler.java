@@ -1,7 +1,7 @@
 package ua.goit.handlers;
 
 import ua.goit.graphic.*;
-import java.lang.Object.*;
+
 
 public class ShapeHandler {
 
@@ -9,7 +9,7 @@ public class ShapeHandler {
         return aShape.clone();
     }
 
-    public void move(Shape aShape, int shiftX, int shiftY) throws IllegalArgumentException {
+    public void move(Shape aShape, int shiftX, int shiftY) throws IllegalArgumentException, IllegalShapeException {
         if (aShape.getClass() == Point.class) {
             Point tempObj = (Point) aShape;
             tempObj.shift(shiftX, shiftY);
@@ -50,7 +50,7 @@ public class ShapeHandler {
             tempObj.getPointD().shift(shiftX, shiftY);
 
         } else {
-            //throw new IllegalShapeException();
+            throw new IllegalShapeException();
         }
     }
 }

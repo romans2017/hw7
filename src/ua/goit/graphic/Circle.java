@@ -5,8 +5,7 @@ import ua.goit.handlers.CanFill;
 public class Circle extends Ellipse implements CanFill {
 
     public Circle(Point focus1, int semiMajorAxis) {
-        super(focus1, focus1, semiMajorAxis, semiMajorAxis);
-        this.type = "Circle";
+        this(Colors.Black, focus1, semiMajorAxis);
     }
 
     public Circle(Colors color, Point focus1, int semiMajorAxis) {
