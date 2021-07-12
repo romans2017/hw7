@@ -2,7 +2,7 @@ import ua.goit.graphic.*;
 import ua.goit.handlers.*;
 
 public class ShapeTest {
-    private static ShapeHandler handler = new ShapeHandler();
+    private final static ShapeHandler handler = new ShapeHandler();
 
     public static void main(String[] args) throws IllegalShapeException {
         //point
