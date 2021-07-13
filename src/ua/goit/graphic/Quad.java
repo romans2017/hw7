@@ -5,10 +5,10 @@ import ua.goit.handlers.CanFill;
 import java.util.Objects;
 
 public class Quad extends Shape implements CanFill {
-    private Point pointA;
-    private Point pointB;
-    private Point pointC;
-    private Point pointD;
+    private final Point pointA;
+    private final Point pointB;
+    private final Point pointC;
+    private final Point pointD;
 
     public Quad(Point pointA, Point pointB, Point pointC, Point pointD) {
         this(Colors.Black, pointA, pointB, pointC, pointD);
@@ -27,32 +27,16 @@ public class Quad extends Shape implements CanFill {
         return pointA;
     }
 
-    public void setPointA(Point pointA) {
-        this.pointA = pointA;
-    }
-
     public Point getPointB() {
         return pointB;
-    }
-
-    public void setPointB(Point pointB) {
-        this.pointB = pointB;
     }
 
     public Point getPointC() {
         return pointC;
     }
 
-    public void setPointC(Point pointC) {
-        this.pointC = pointC;
-    }
-
     public Point getPointD() {
         return pointD;
-    }
-
-    public void setPointD(Point pointD) {
-        this.pointD = pointD;
     }
 
     @Override

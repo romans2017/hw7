@@ -3,10 +3,10 @@ package ua.goit.graphic;
 import java.util.Objects;
 
 public class Curve extends Line{
-    private Point pointStart;
-    private Point pointEnd;
-    private Point pointAnchor1;
-    private Point pointAnchor2;
+    private final Point pointStart;
+    private final Point pointEnd;
+    private final Point pointAnchor1;
+    private final Point pointAnchor2;
 
     public Curve(Point pointStart, Point pointEnd, Point pointAnchor1, Point pointAnchor2) {
         this(Colors.Black, pointStart, pointEnd, pointAnchor1, pointAnchor2);
@@ -35,22 +35,6 @@ public class Curve extends Line{
 
     public Point getPointAnchor2() {
         return pointAnchor2;
-    }
-
-    public void setPointStart(Point pointStart) {
-        this.pointStart = pointStart;
-    }
-
-    public void setPointEnd(Point pointEnd) {
-        this.pointEnd = pointEnd;
-    }
-
-    public void setPointAnchor1(Point pointAnchor1) {
-        this.pointAnchor1 = pointAnchor1;
-    }
-
-    public void setPointAnchor2(Point pointAnchor2) {
-        this.pointAnchor2 = pointAnchor2;
     }
 
     @Override

@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Straight extends Line{
 
-    private Point pointStart;
-    private Point pointEnd;
+    private final Point pointStart;
+    private final Point pointEnd;
 
     public Straight(Point pointStart, Point pointEnd) {
         this(Colors.Black, pointStart, pointEnd);
@@ -24,14 +24,6 @@ public class Straight extends Line{
 
     public Point getPointEnd() {
         return pointEnd;
-    }
-
-    public void setPointStart(Point pointStart) {
-        this.pointStart = pointStart;
-    }
-
-    public void setPointEnd(Point pointEnd) {
-        this.pointEnd = pointEnd;
     }
 
     @Override

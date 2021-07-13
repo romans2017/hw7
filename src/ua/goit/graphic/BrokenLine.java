@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class BrokenLine extends Line {
-    private Point[] points;
+    private final Point[] points;
 
     public BrokenLine(Point[] points) {
         this(Colors.Black, points);
@@ -21,10 +21,6 @@ public class BrokenLine extends Line {
 
     public Point[] getPoints() {
         return points;
-    }
-
-    public void setPoints(Point[] points) {
-        this.points = points;
     }
 
     @Override
