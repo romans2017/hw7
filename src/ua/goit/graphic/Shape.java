@@ -1,6 +1,6 @@
 package ua.goit.graphic;
 
-abstract public class Shape implements Cloneable {
+abstract public class Shape {
     protected String type;
     protected Colors color;
 

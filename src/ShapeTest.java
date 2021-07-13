@@ -92,7 +92,7 @@ public class ShapeTest {
             Shape quad3 = handler.copy(quad1);
             System.out.println(quad1);
             System.out.println(quad3.equals(quad1));
-            handler.move(quad3, 2, 8);
+            handler.move(quad3, 0, 0);
             System.out.println(quad3);
             System.out.println(quad3.equals(quad1));
 
