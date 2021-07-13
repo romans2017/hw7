@@ -1,6 +1,7 @@
 package ua.goit.graphic;
 
 abstract public class Shape {
+
     protected String type;
     protected Colors color;
 
@@ -14,15 +15,17 @@ abstract public class Shape {
 
     Shape() {
         this.color = Colors.Black;
-        this.type = "";
     }
 
     Shape(Colors color) {
         this.color = color;
-        this.type = "";
     }
 
     public String draw() {
         return type + " is drawn";
     }
+
+    abstract public Shape copy();
+
+    abstract public void move(int shiftX, int shiftY);
 }

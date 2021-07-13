@@ -2,7 +2,8 @@ package ua.goit.graphic;
 
 import java.util.Objects;
 
-public class Curve extends Line{
+public class Curve extends Line {
+
     private final Point pointStart;
     private final Point pointEnd;
     private final Point pointAnchor1;
@@ -57,12 +58,30 @@ public class Curve extends Line{
 
     @Override
     public String toString() {
-        return getType() + "{" +
+        return type + "{" +
                 "pointStart=" + pointStart +
                 ", pointEnd=" + pointEnd +
                 ", pointAnchor1=" + pointAnchor1 +
                 ", pointAnchor2=" + pointAnchor2 +
                 ", color='" + color + '\'' +
                 '}';
+    }
+
+    @Override
+    public Shape copy() {
+        return new Curve(
+                color,
+                new Point(pointStart),
+                new Point(pointEnd),
+                new Point(pointAnchor1),
+                new Point(pointAnchor2));
+    }
+
+    @Override
+    public void move(int shiftX, int shiftY) {
+        pointStart.shift(shiftX, shiftY);
+        pointEnd.shift(shiftX, shiftY);
+        pointAnchor1.shift(shiftX, shiftY);
+        pointAnchor2.shift(shiftX, shiftY);
     }
 }

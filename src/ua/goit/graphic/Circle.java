@@ -1,8 +1,8 @@
 package ua.goit.graphic;
 
-import ua.goit.handlers.CanFill;
+import ua.goit.handlers.Fillable;
 
-public class Circle extends Ellipse implements CanFill {
+public class Circle extends Ellipse implements Fillable {
 
     public Circle(Point focus1, int semiMajorAxis) {
         this(Colors.Black, focus1, semiMajorAxis);
@@ -15,7 +15,7 @@ public class Circle extends Ellipse implements CanFill {
 
     @Override
     public String toString() {
-        return getType() + "{" +
+        return type + "{" +
                 "center=" + focus1 +
                 ", radius=" + semiMajorAxis +
                 ", color='" + color + '\'' +
@@ -25,5 +25,18 @@ public class Circle extends Ellipse implements CanFill {
     @Override
     public String fill(Colors fillColor) {
         return "Now circle's color is " + fillColor;
+    }
+
+    @Override
+    public Shape copy() {
+        return new Circle(
+                color,
+                new Point(focus1),
+                semiMajorAxis);
+    }
+
+    @Override
+    public void move(int shiftX, int shiftY) {
+        focus1.shift(shiftX, shiftY);
     }
 }

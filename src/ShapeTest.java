@@ -17,6 +17,8 @@ public class ShapeTest {
             handler.move(point3, -1, 2);
             System.out.println(point3);
             System.out.println(point3.equals(point1));
+            handler.draw(point3);
+            handler.getType(point3);
 
             //straight
             System.out.println();
@@ -30,6 +32,8 @@ public class ShapeTest {
             handler.move(straight3, -1, 10);
             System.out.println(straight3);
             System.out.println(straight3.equals(straight1));
+            handler.draw(straight3);
+            handler.getType(straight3);
 
             //curve
             System.out.println();
@@ -43,6 +47,8 @@ public class ShapeTest {
             handler.move(curve3, 5, 10);
             System.out.println(curve3);
             System.out.println(curve3.equals(curve1));
+            handler.draw(curve3);
+            handler.getType(curve3);
 
             //broken line
             System.out.println();
@@ -56,6 +62,8 @@ public class ShapeTest {
             handler.move(brokenLine3, 1, 0);
             System.out.println(brokenLine3);
             System.out.println(brokenLine3.equals(brokenLine1));
+            handler.draw(brokenLine3);
+            handler.getType(brokenLine3);
 
             //ellipse
             System.out.println();
@@ -69,6 +77,8 @@ public class ShapeTest {
             handler.move(ellipse3, 1, 10);
             System.out.println(ellipse3);
             System.out.println(ellipse3.equals(ellipse1));
+            handler.draw(ellipse3);
+            handler.getType(ellipse3);
 
             //circle
             System.out.println();
@@ -79,9 +89,16 @@ public class ShapeTest {
             Shape circle3 = handler.copy(circle2);
             System.out.println(circle3);
             System.out.println(circle3.equals(circle2));
-            handler.move(circle3, -1, 10);
+            handler.move(circle3, 0, 0);
             System.out.println(circle3);
             System.out.println(circle3.equals(circle2));
+            handler.draw(circle3);
+            handler.getType(circle3);
+
+            //fill
+            System.out.println();
+            handler.fill(circle2, Colors.Blue);
+            handler.fill(ellipse2, Colors.Orange);
 
             //quad
             System.out.println();
@@ -92,15 +109,14 @@ public class ShapeTest {
             Shape quad3 = handler.copy(quad1);
             System.out.println(quad1);
             System.out.println(quad3.equals(quad1));
-            handler.move(quad3, 0, 0);
+            handler.move(quad3, 5, 0);
             System.out.println(quad3);
             System.out.println(quad3.equals(quad1));
+            handler.draw(quad3);
+            handler.getType(quad3);
 
-            //fill
-            System.out.println();
-            System.out.println(ellipse1.fill(Colors.Green));
-            System.out.println(circle2.fill(Colors.Green));
-            System.out.println(((Quad) quad3).fill(Colors.Green));
+            //exception
+            handler.fill(point2, Colors.Green);
 
         } catch (IllegalArgumentException | IllegalShapeException e) {
             e.printStackTrace();

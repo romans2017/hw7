@@ -1,10 +1,10 @@
 package ua.goit.graphic;
 
-import ua.goit.handlers.CanFill;
+import ua.goit.handlers.Fillable;
 
 import java.util.Objects;
 
-public class Ellipse extends Shape implements CanFill {
+public class Ellipse extends Shape implements Fillable {
 
     protected final Point focus1;
     protected final Point focus2;
@@ -17,12 +17,12 @@ public class Ellipse extends Shape implements CanFill {
 
     public Ellipse(Colors color, Point focus1, Point focus2, int semiMajorAxis, int semiMinorAxis) {
         super(color);
-        if (semiMajorAxis<=0 || semiMinorAxis<=0) {
+        if (semiMajorAxis <= 0 || semiMinorAxis <= 0) {
             throw new IllegalArgumentException("semiMajorAxis and semiMinorAxis must be positive");
         }
         this.type = "Ellipse";
-        this.focus1 = new Point(focus1);
-        this.focus2 = new Point(focus2);
+        this.focus1 = focus1;
+        this.focus2 = focus2;
         this.semiMajorAxis = semiMajorAxis;
         this.semiMinorAxis = semiMinorAxis;
     }
@@ -63,7 +63,7 @@ public class Ellipse extends Shape implements CanFill {
 
     @Override
     public String toString() {
-        return getType() + "{" +
+        return type + "{" +
                 "focus1=" + focus1 +
                 ", focus2=" + focus2 +
                 ", semiMajorAxis=" + semiMajorAxis +
@@ -75,5 +75,21 @@ public class Ellipse extends Shape implements CanFill {
     @Override
     public String fill(Colors fillColor) {
         return "Ellipse " + toString() + " is colored " + fillColor;
+    }
+
+    @Override
+    public Shape copy() {
+        return new Ellipse(
+                color,
+                new Point(focus1),
+                new Point(focus2),
+                semiMajorAxis,
+                semiMinorAxis);
+    }
+
+    @Override
+    public void move(int shiftX, int shiftY) {
+        focus1.shift(shiftX, shiftY);
+        focus2.shift(shiftX, shiftY);
     }
 }

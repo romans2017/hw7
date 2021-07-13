@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class BrokenLine extends Line {
+
     private final Point[] points;
 
     public BrokenLine(Point[] points) {
@@ -25,7 +26,7 @@ public class BrokenLine extends Line {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(points) * Objects.hash(color,type);
+        return Arrays.hashCode(points) * Objects.hash(color, type);
     }
 
     @Override
@@ -40,9 +41,21 @@ public class BrokenLine extends Line {
 
     @Override
     public String toString() {
-        return getType() + "{" +
+        return type + "{" +
                 "points=" + Arrays.toString(points) +
                 ", color='" + color + '\'' +
                 '}';
+    }
+
+    @Override
+    public Shape copy() {
+        return new BrokenLine(points);
+    }
+
+    @Override
+    public void move(int shiftX, int shiftY) {
+        for (Point point : points) {
+            point.shift(shiftX, shiftY);
+        }
     }
 }

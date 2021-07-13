@@ -2,7 +2,7 @@ package ua.goit.graphic;
 
 import java.util.Objects;
 
-public class Straight extends Line{
+public class Straight extends Line {
 
     private final Point pointStart;
     private final Point pointEnd;
@@ -44,10 +44,24 @@ public class Straight extends Line{
 
     @Override
     public String toString() {
-        return getType() + "{" +
+        return type + "{" +
                 "color='" + color + '\'' +
                 ", pointStart=" + pointStart +
                 ", pointEnd=" + pointEnd +
                 '}';
+    }
+
+    @Override
+    public Shape copy() {
+        return new Straight(
+                color,
+                new Point(pointStart),
+                new Point(pointEnd));
+    }
+
+    @Override
+    public void move(int shiftX, int shiftY) {
+        pointStart.shift(shiftX, shiftY);
+        pointEnd.shift(shiftX, shiftY);
     }
 }

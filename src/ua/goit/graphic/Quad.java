@@ -1,10 +1,11 @@
 package ua.goit.graphic;
 
-import ua.goit.handlers.CanFill;
+import ua.goit.handlers.Fillable;
 
 import java.util.Objects;
 
-public class Quad extends Shape implements CanFill {
+public class Quad extends Shape implements Fillable {
+
     private final Point pointA;
     private final Point pointB;
     private final Point pointC;
@@ -17,10 +18,10 @@ public class Quad extends Shape implements CanFill {
     public Quad(Colors color, Point pointA, Point pointB, Point pointC, Point pointD) {
         super(color);
         this.type = "Quad";
-        this.pointA = new Point(pointA);
-        this.pointB = new Point(pointB);
-        this.pointC = new Point(pointC);
-        this.pointD = new Point(pointD);
+        this.pointA = pointA;
+        this.pointB = pointB;
+        this.pointC = pointC;
+        this.pointD = pointD;
     }
 
     public Point getPointA() {
@@ -71,5 +72,23 @@ public class Quad extends Shape implements CanFill {
     @Override
     public String fill(Colors fillColor) {
         return "Quad " + toString() + " is filled with " + fillColor;
+    }
+
+    @Override
+    public Shape copy() {
+        return new Quad(
+                color,
+                new Point(pointA),
+                new Point(pointB),
+                new Point(pointC),
+                new Point(pointD));
+    }
+
+    @Override
+    public void move(int shiftX, int shiftY) {
+        pointA.shift(shiftX, shiftY);
+        pointB.shift(shiftX, shiftY);
+        pointC.shift(shiftX, shiftY);
+        pointD.shift(shiftX, shiftY);
     }
 }

@@ -9,4 +9,8 @@ abstract public class Line extends Shape {
     Line() {
         this(Colors.Black);
     }
+
+    abstract public Shape copy();
+
+    abstract public void move(int shiftX, int shiftY);
 }
