@@ -1,8 +1,6 @@
 package ua.goit.graphic;
 
-import ua.goit.handlers.ShapeToDo;
-
-abstract public class Shape implements ShapeToDo {
+abstract public class Shape {
 
     protected String type;
     protected Colors color;
@@ -22,6 +20,8 @@ abstract public class Shape implements ShapeToDo {
     public String draw() {
         return type + " is drawn";
     }
+
+    abstract public void move(int shiftX, int shiftY);
 
     @Override
     abstract public Shape clone() throws CloneNotSupportedException;
