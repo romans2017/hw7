@@ -6,20 +6,6 @@ public class ShapeTest {
 
     public static void main(String[] args) {
         try {
-            //point
-            Point point1 = new Point(1, 2);
-            System.out.println(point1);
-            Point point2 = new Point(Colors.Red, 1, 5);
-            System.out.println(point2);
-            Shape point3 = handler.copy(point1);
-            System.out.println(point3);
-            System.out.println(point3.equals(point1));
-            handler.move(point3, -1, 2);
-            System.out.println(point3);
-            System.out.println(point3.equals(point1));
-            handler.draw(point3);
-            handler.getType(point3);
-
             //straight
             System.out.println();
             Straight straight1 = new Straight(new Point(1, 2), new Point(2, 3));
@@ -95,11 +81,6 @@ public class ShapeTest {
             handler.draw(circle3);
             handler.getType(circle3);
 
-            //fill
-            System.out.println();
-            handler.fill(circle2, Colors.Blue);
-            handler.fill(ellipse2, Colors.Orange);
-
             //quad
             System.out.println();
             Quad quad1 = new Quad(new Point(1, 2), new Point(2, 3), new Point(3, 4), new Point(4, 5));
@@ -115,10 +96,15 @@ public class ShapeTest {
             handler.draw(quad3);
             handler.getType(quad3);
 
-            //exception
-            handler.fill(point2, Colors.Green);
+            //fill
+            System.out.println();
+            handler.fill(circle2, Colors.Blue);
+            handler.fill(ellipse2, Colors.Orange);
 
-        } catch (IllegalArgumentException | IllegalShapeException e) {
+            //exception
+            handler.fill(brokenLine2, Colors.Green);
+
+        } catch (IllegalArgumentException | IllegalShapeException | CloneNotSupportedException e) {
             e.printStackTrace();
         }
     }

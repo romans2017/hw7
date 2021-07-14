@@ -9,31 +9,24 @@ import java.util.Objects;
  * a IllegalArgumentException to be thrown
  * */
 
-public class Point extends Shape {
+public class Point implements Cloneable{
 
     private int x;
     private int y;
+    private Colors color;
+    //private String type;
 
     public Point(Colors color, int x, int y) throws IllegalArgumentException {
-        super(color);
         if (x < 0 || y < 0) {
             throw new IllegalArgumentException("x and y must be non-negative");
         }
-        this.type = "Point";
+        this.color = color;
         this.x = x;
         this.y = y;
     }
 
     public Point(int x, int y) throws IllegalArgumentException {
         this(Colors.Black, x, y);
-    }
-
-    public Point(Point point) {
-        super();
-        this.type = "Point";
-        this.x = point.x;
-        this.y = point.y;
-        this.color = point.color;
     }
 
     public int getX() {
@@ -65,7 +58,7 @@ public class Point extends Shape {
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y, color, type);
+        return Objects.hash(x, y, color);
     }
 
     @Override
@@ -75,13 +68,12 @@ public class Point extends Shape {
         Point point = (Point) o;
         return x == point.x
                 && y == point.y
-                && color.equals(point.color)
-                && type.equals(point.type);
+                && color.equals(point.color);
     }
 
     @Override
     public String toString() {
-        return type + "{" +
+        return "Point {" +
                 "x=" + x +
                 ", y=" + y +
                 ", color='" + color.toString() + '\'' +
@@ -89,12 +81,7 @@ public class Point extends Shape {
     }
 
     @Override
-    public Shape copy() {
-        return new Point(this);
-    }
-
-    @Override
-    public void move(int shiftX, int shiftY) {
-        shift(shiftX, shiftY);
+    public Point clone() throws CloneNotSupportedException {
+        return (Point)super.clone();
     }
 }

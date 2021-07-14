@@ -75,13 +75,13 @@ public class Quad extends Shape implements Fillable {
     }
 
     @Override
-    public Shape copy() {
+    public Quad clone() throws CloneNotSupportedException {
         return new Quad(
                 color,
-                new Point(pointA),
-                new Point(pointB),
-                new Point(pointC),
-                new Point(pointD));
+                pointA.clone(),
+                pointB.clone(),
+                pointC.clone(),
+                pointD.clone());
     }
 
     @Override

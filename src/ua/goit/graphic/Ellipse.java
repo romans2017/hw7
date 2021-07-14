@@ -78,11 +78,11 @@ public class Ellipse extends Shape implements Fillable {
     }
 
     @Override
-    public Shape copy() {
+    public Ellipse clone() throws CloneNotSupportedException {
         return new Ellipse(
                 color,
-                new Point(focus1),
-                new Point(focus2),
+                focus1.clone(),
+                focus2.clone(),
                 semiMajorAxis,
                 semiMinorAxis);
     }

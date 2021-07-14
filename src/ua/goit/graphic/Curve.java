@@ -2,7 +2,7 @@ package ua.goit.graphic;
 
 import java.util.Objects;
 
-public class Curve extends Line {
+public class Curve extends Shape {
 
     private final Point pointStart;
     private final Point pointEnd;
@@ -15,7 +15,7 @@ public class Curve extends Line {
 
     public Curve(Colors color, Point pointStart, Point pointEnd, Point pointAnchor1, Point pointAnchor2) {
         super(color);
-        this.type += "-curve";
+        this.type = "Line-curve";
         this.pointAnchor1 = pointAnchor1;
         this.pointAnchor2 = pointAnchor2;
         this.pointStart = pointStart;
@@ -68,13 +68,13 @@ public class Curve extends Line {
     }
 
     @Override
-    public Shape copy() {
+    public Curve clone() throws CloneNotSupportedException {
         return new Curve(
                 color,
-                new Point(pointStart),
-                new Point(pointEnd),
-                new Point(pointAnchor1),
-                new Point(pointAnchor2));
+                pointStart.clone(),
+                pointEnd.clone(),
+                pointAnchor1.clone(),
+                pointAnchor2.clone());
     }
 
     @Override

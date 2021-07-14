@@ -28,10 +28,10 @@ public class Circle extends Ellipse implements Fillable {
     }
 
     @Override
-    public Shape copy() {
+    public Circle clone() throws CloneNotSupportedException {
         return new Circle(
                 color,
-                new Point(focus1),
+                focus1.clone(),
                 semiMajorAxis);
     }
 

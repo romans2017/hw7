@@ -3,20 +3,20 @@ package ua.goit.graphic;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class BrokenLine extends Line {
+public class BrokenLine extends Shape {
 
     private final Point[] points;
 
-    public BrokenLine(Point[] points) {
+    public BrokenLine(Point[] points) throws CloneNotSupportedException {
         this(Colors.Black, points);
     }
 
-    public BrokenLine(Colors color, Point[] points) {
+    public BrokenLine(Colors color, Point[] points) throws CloneNotSupportedException {
         super(color);
-        this.type += "-broken";
+        this.type = "Line-broken";
         this.points = new Point[points.length];
         for (int i = 0; i < points.length; i++) {
-            this.points[i] = new Point(points[i]);
+            this.points[i] = points[i].clone();
         }
     }
 
@@ -48,7 +48,7 @@ public class BrokenLine extends Line {
     }
 
     @Override
-    public Shape copy() {
+    public BrokenLine clone() throws CloneNotSupportedException {
         return new BrokenLine(points);
     }
 

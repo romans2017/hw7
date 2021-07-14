@@ -4,8 +4,8 @@ import ua.goit.graphic.*;
 
 public class ShapeHandler {
 
-    public Shape copy(Shape shape) {
-        return shape.copy();
+    public Shape copy(Shape shape) throws CloneNotSupportedException {
+        return shape.clone();
     }
 
     public void move(Shape shape, int shiftX, int shiftY) throws IllegalArgumentException {
@@ -22,7 +22,7 @@ public class ShapeHandler {
 
     public void fill(Shape shape, Colors color) throws IllegalShapeException {
         if (shape instanceof Fillable) {
-            ((Fillable) shape).fill(color);
+            System.out.println(((Fillable) shape).fill(color));
         } else {
             throw new IllegalShapeException();
         }

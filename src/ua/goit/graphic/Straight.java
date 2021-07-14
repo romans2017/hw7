@@ -2,7 +2,7 @@ package ua.goit.graphic;
 
 import java.util.Objects;
 
-public class Straight extends Line {
+public class Straight extends Shape {
 
     private final Point pointStart;
     private final Point pointEnd;
@@ -13,7 +13,7 @@ public class Straight extends Line {
 
     public Straight(Colors color, Point pointStart, Point pointEnd) {
         super(color);
-        this.type += "-straight";
+        this.type = "Line-straight";
         this.pointStart = pointStart;
         this.pointEnd = pointEnd;
     }
@@ -52,11 +52,11 @@ public class Straight extends Line {
     }
 
     @Override
-    public Shape copy() {
+    public Straight clone() throws CloneNotSupportedException {
         return new Straight(
                 color,
-                new Point(pointStart),
-                new Point(pointEnd));
+                pointStart.clone(),
+                pointEnd.clone());
     }
 
     @Override
